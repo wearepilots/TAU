@@ -14,21 +14,25 @@ class BDDTest: TAUUITestBase {
     extension TAUUITestBase {
         
         func givenAppIsReady() {
-            
-            XCTAssertTrue(app.buttons["enrollButton"].exists)
+            XCTContext.runActivity(named: "Appa Gotova") { _  in
+                XCTAssertTrue(app.buttons["enrollButton"].exists)
+            }
         }
         func whenIEnter(city: String) {
-            
+            XCTContext.runActivity(named: "Vvodim Gorod") { _  in
             app.textFields["city"].tap()
-            app.textFields["city"].typeText("London")
+                app.textFields["city"].typeText("London")
+            }
         }
         func whenIEnrolled() {
-            
+            XCTContext.runActivity(named: "Tapaem Knopku") { _  in
             app.buttons["enrollButton"].tap()
+            }
         }
         func thenIShouldSeeThankYouMessage() {
-            
+            XCTContext.runActivity(named: "Vidim Spasibo") { _  in
             XCTAssertTrue(app.staticTexts["Thanks for Joining!"].exists)
+            }
     }
     
 }
